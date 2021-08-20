@@ -39,6 +39,7 @@ namespace _3ALaCartaViewer
                 {
                     ugVideos.Children.Add(new VideoViewer(video));
                 }
+                txtCercador.Text = txtCercador.Text.Replace(ENTER, "");
             }
         }
     }

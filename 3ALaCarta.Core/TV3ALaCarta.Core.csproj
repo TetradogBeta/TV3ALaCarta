@@ -5,16 +5,15 @@
     <RootNamespace>TV3ALaCarta.Core</RootNamespace>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <Nullable>enable</Nullable>
+    <PackageProjectUrl>https://github.com/TetradogBeta/TV3ALaCarta</PackageProjectUrl>
+    <Copyright>Gabriel.Cat.Developer</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Gabriel.Cat.S.Utilitats" Version="1.2.6" />
+    <PackageReference Include="Gabriel.Cat.S.Xarxa" Version="1.0.6" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.36" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Documents\GitHub\Gabriel.Cat.S.Utilitats\Gabriel.Cat.S.Utilitats\Gabriel.Cat.S.Utilitats.csproj" />
-    <ProjectReference Include="..\..\..\..\Documents\GitHub\Gabriel.Cat.S.Xarxa\Gabriel.Cat.S.Xarxa\Gabriel.Cat.S.Xarxa.csproj" />
   </ItemGroup>
 
 </Project>

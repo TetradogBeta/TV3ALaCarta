@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_3ALaCartaViewer"
         mc:Ignorable="d"
-        Title="TV3 a la carta" Height="450" Width="800">
+        Title="TV3 a la carta V1.0" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
