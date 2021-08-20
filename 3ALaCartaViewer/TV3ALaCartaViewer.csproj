@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>TV3ALaCartaViewer</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\3ALaCartaViewer\icono.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Notifications.Wpf.Core" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Documents\GitHub\Gabriel.Cat.S.Wpf\Gabriel.Cat.S.Wpf\Gabriel.Cat.S.Wpf.csproj" />
+    <ProjectReference Include="..\3ALaCarta.Core\TV3ALaCarta.Core.csproj" />
+  </ItemGroup>
+
+</Project>
