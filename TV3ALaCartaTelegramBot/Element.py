@@ -5,11 +5,11 @@ import cloudscraper
 class Element:
     def __init__(self,nodeStr):
         node=BeautifulSoup(str(nodeStr),"html.parser");
-        desc=node.find("entraLlarg");
+        desc=node.select_one(".entraLlarg");
         if desc is None:
-           desc=node.find("entradeta");
+           desc=node.select_one(".entradeta");
            if desc is None:
-               desc=node.find("entramobil");
+               desc=node.select_one(".entramobil");
 
 
         if desc is not None:
@@ -18,9 +18,9 @@ class Element:
         self.UriRel=node.find("a")[0]["href"]; 
         self.Img=node.find("img")[0]["src"];
         self.Titol=node.find("h3")[0];
-        self.Info=node.find("info")[0]; 
-        self.Data=node.find("data")[0]["datetime"];
-        self.Duracio=node.find("duration")[0];
+        self.Info=node.select_one(".info"); 
+        self.Data=node.select_one(".data")["datetime"];
+        self.Duracio=node.select_one(".duration");
         self.Id=self.UriRel.split('/')[-2];
         self.UrlJSon="http://dinamics.ccma.cat/pvideo/media.jsp?media=video&version=0s&idint="+self.Id;
     def ToMessage(self):
