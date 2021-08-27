@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
+from Element import Element
 import cloudscraper
 import re
-import Element
 import urllib.parse
 
 class TV3ALaCarta:
@@ -9,15 +9,16 @@ class TV3ALaCarta:
     URLCERCADOR = URL + "/tv3/alacarta/cercador/";
     @staticmethod
     def GetCercaUrlSinPagina(text):
-        text=urllib.parse.quote(text);
-        return TV3ALaCarta.URLCERCADOR+"text="+text+"&profile=videos&pagina=";
-    def GetCercaUrl(text,pagina=1):
-        return TV3ALaCarta.GetCercaUrlSinPagina(text)+str(pagina);
+        text=urllib.parse.quote(str(text));
+        return TV3ALaCarta.URLCERCADOR+"?text="+text+"&profile=videos";
     @staticmethod
-    def Carca(urlCerca):
+    def GetCercaUrl(text,pagina=1):
+        return TV3ALaCarta.GetCercaUrlSinPagina(text)+"&pagina="+str(pagina);
+    @staticmethod
+    def Cerca(urlCerca):
         scraper = cloudscraper.create_scraper();
         page = scraper.get(str(urlCerca)).text;
         soup=BeautifulSoup(str(page),"html.parser");
-        lstElements=soup.select(".F-llistat-item");
-        for video in lstElements:
+        lstElements=soup.find_all("ul","R-resultats");
+        for video in lstElements[0]:
             yield Element(video);
