@@ -12,7 +12,7 @@ if exists(fileConfig):
     fConfig.close();
     token=config[0];
 elif len(sys.argv)>1:
-    token=args[1];
+    token=sys.argv[1];
     fConfig = open(fileConfig, 'w');
     fConfig.writelines([token]);
     fConfig.close();
