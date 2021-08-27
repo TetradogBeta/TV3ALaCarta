@@ -1,5 +1,6 @@
 from TV3ALaCarta import TV3ALaCarta
 from Element import Element
+from telepot.loop import MessageLoop
 import telepot
 
 
@@ -31,7 +32,7 @@ class TelegramBot:
     @staticmethod
     def Start(token):
         TelegramBot.Bot=telepot.Bot(token);
-        TelegramBot.Bot.message_loop(TelegramBot._DoIt);
+        return MessageLoop(TelegramBot.Bot, handle=TelegramBot._DoIt);
     
     @staticmethod
     def _DoIt(message):

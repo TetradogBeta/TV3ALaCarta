@@ -16,7 +16,5 @@ elif len(sys.argv)>1:
     fConfig = open(fileConfig, 'w');
     fConfig.writelines([token]);
     fConfig.close();
-print(token);
-TelegramBot.Start(token);
-while True:
-    time.sleep(60*60*1000);
+print("Iniciando TV3 A La Carta BOT v1.0")
+TelegramBot.Start(token).run_forever();
