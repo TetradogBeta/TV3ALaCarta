@@ -26,10 +26,19 @@ def Main():
     bot.Default.AddContains("http",lambda cli:cli.SendText("Només links donats per la cerca de TV3 a La Carta!"));
     bot.Default.Default=Cerca;
     bot.AddCommand("Start", lambda cli,args:cli.SendText("1-Text a cercar\n2-URL a obtenir informació"));
+    bot.ReplyTractament=ReplyTractament;
     bot.Start();
 
+def ReplyTractament(cli):
+    if cli.IsAReplyFromBot:
+        cli.Args=cli.Reply.split("\n");
+        if len(cli.Args)>0 and cli.Args[0].startswith("/"):
+            cli.Command=str(cli.Args[0][1:]);
+            cli.Args=cli.Args[1:];
+
 def Cerca(cli):
-    if len(cli.Args)>2 and "pagina"== cli.Args[-2]:
+
+    if len(cli.Args)>2 and "pagina"== cli.Args[-2].lower():
         pagina=int(cli.Args[-1]);
         text=" ".join(cli.Args[:-2]);
     else:
@@ -41,7 +50,7 @@ def Cerca(cli):
         cli.SendPhoto(video.Img,video.ToMessage());
     if total>0:
         siguientePagina=pagina+1;    
-        cli.SendText(text+" Pagina "+str(pagina));
+        cli.SendText(text+" Pagina "+str(siguientePagina));
     else:
         cli.SendText("No s'ha trobat res!");
 
@@ -53,7 +62,10 @@ def SendInfo(cli):
         if " " in text:
             url=text.split(" ")[0];
         else:
-            url=text;    
+            url=text;
+    elif cli.Args[-1].startswith("http"):
+        url=cli.Args[-1];
+
     result=Element.GetInfo(url);
     cli.SendPhoto(result.Img,result.Desc);
 
